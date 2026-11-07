@@ -1,0 +1,48 @@
+# Python virtual environments & bytecode
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Environment and sensitive keys
+.env
+.env.*
+!.env.example
+*key*.txt
+*keys*.txt
+Backend/geminiAPIkey.txt
+*backup*
+*backuo*
+Backend/*.txt
+*.bak
+
+# Generated vector databases
+data/
+vectorstore/
+faiss_index/
+*.faiss
+*.index
+*.pkl
+
+# Uploaded documents
+*.pdf
+*.docx
+*.doc
+
+# Python testing and cache
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# IDE and editor
+.vscode/
+.idea/
+
+# Dynamic test outputs & logs
+docling_test_output/
+*.log
+
+# OS files
+Thumbs.db
+.DS_Store

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AI Document Chatbot — General-Purpose Document Assistant</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<div class="page-bg">
+		<div class="container">
+			<header class="header">
+				<div class="title">RAG-powered Document Assistant</div>
+				<div class="subtitle">General-Purpose Document Question Answering powered by Hybrid RAG (FAISS + BM25)</div>
+			</header>
+
+			<main class="main-grid">
+				<section class="upload-card card">
+					<div class="upload-inner">
+						<div class="upload-label">UPLOAD DOCUMENT (PDF or DOCX)</div>
+						<div class="upload-desc">Upload reports, research papers, documentation, manuals, or Word files for intelligent indexing.</div>
+						<button class="select-btn" id="upload-btn">Select Document</button>
+						<div class="file-types-hint">Supported formats: PDF (.pdf) and Word (.docx) up to 100MB</div>
+					</div>
+				</section>
+
+				<aside class="active-doc card">
+					<div class="panel-title">Active Document</div>
+					<div class="doc-row"><span>File Name</span><strong id="doc-filename">—</strong></div>
+					<div class="doc-row"><span>Format</span><strong id="doc-type">—</strong></div>
+					<div class="doc-row"><span>Total Pages</span><strong id="doc-pages">—</strong></div>
+					<div class="doc-row"><span>Indexed Chunks</span><strong id="doc-chunks">—</strong></div>
+					<div class="doc-row"><span>Index Engine</span><strong id="doc-engine">FAISS + BM25</strong></div>
+					<div class="doc-row"><span>Status</span><strong id="doc-status" class="status-idle">Idle</strong></div>
+				</aside>
+
+				<section class="pipeline card">
+					<div class="pipeline-title">Pipeline Status</div>
+					<div class="pipeline-steps" id="pipeline-steps">
+						<div class="step" id="step-upload">1. Upload</div>
+						<div class="arrow">➔</div>
+						<div class="step" id="step-extract">2. Structure & Text Extraction</div>
+						<div class="arrow">➔</div>
+						<div class="step" id="step-chunk">3. Token-Safe Chunking</div>
+						<div class="arrow">➔</div>
+						<div class="step" id="step-index">4. Hybrid Indexing</div>
+						<div class="arrow">➔</div>
+						<div class="step" id="step-ready">5. Document Ready</div>
+					</div>
+					<div class="pipeline-complete" id="pipeline-message">No active document. Please upload a document to begin.</div>
+				</section>
+
+				<section class="qa card" id="chat-section">
+					<div class="rag-status-banner" id="rag-banner">
+						<span id="banner-status-icon">⚪</span> <span id="banner-status-text">No active document</span>
+						<div class="rag-sub" id="rag-sub">Upload a PDF or Word document to begin conversational analysis.</div>
+					</div>
+					<div class="chat-container">
+						<div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+						<div class="suggestions" id="suggestions"></div>
+						<div class="chat-input">
+							<textarea id="chat-input" placeholder="Upload a document first..." rows="1"></textarea>
+							<button id="send-btn" disabled>Send</button>
+						</div>
+					</div>
+				</section>
+
+			</main>
+		</div>
+	</div>
+</body>
+</html>
